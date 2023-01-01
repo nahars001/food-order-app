@@ -1,8 +1,20 @@
+
+import Header from "./components/Layout/Header";
+import Meals from "./components/Meals/Meals";
+import MealItemForm from "./components/Meals/MealItem/MealItemForm";
+
 function App() {
-  return (
-    <div>
-      <h2>Let's get started!</h2>
-    </div>
+
+
+  return (<>
+
+    
+      <Header / >
+        <main>
+          <Meals/>
+     
+        </main>
+  </>
   );
 }
 
