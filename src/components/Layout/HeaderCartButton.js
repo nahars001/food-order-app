@@ -7,40 +7,40 @@ import classes from './HeaderCartButton.module.css';
 
 const HeaderCartButton = props => {
 
-     const[ buttonIsHighLighted , setButtonIsHighLighted]=useState(false);
-   const cartCtx = useContext(CartContext);
-  
+    const [buttonIsHighLighted, setButtonIsHighLighted] = useState(false);
+    const cartCtx = useContext(CartContext);
+
     const { items } = cartCtx;
-    const numberOfCartItems =items.reduce((currentNumber , item) => {
+    const numberOfCartItems = items.reduce((currentNumber, item) => {
         return currentNumber + item.amount;
     }, 0);
 
-   
 
-const btnClasses = `${classes.button} ${ buttonIsHighLighted ? classes.bump : " "}`;
- 
-         useEffect(() => {
-            if(cartCtx.items.length === 0){
-                return;
-            }
 
-            setButtonIsHighLighted(true);
-              const timer = setTimeout(() => {
-                    setButtonIsHighLighted(false);
-                 }, 300);
+    const btnClasses = `${classes.button} ${buttonIsHighLighted ? classes.bump : " "}`;
 
-                 return ()=> {
-                    clearTimeout(timer);
-                 }
+    useEffect(() => {
+        if (cartCtx.items.length === 0) {
+            return;
+        }
 
-         }, [items.length])
+        setButtonIsHighLighted(true);
+        const timer = setTimeout(() => {
+            setButtonIsHighLighted(false);
+        }, 300);
+
+        return () => {
+            clearTimeout(timer);
+        }
+
+    }, [items.length, cartCtx.items.length])
 
 
 
     return (
         <button className={btnClasses} onClick={props.onClick}>
             <span className={classes.icon}>
-            <CartIcon/>
+                <CartIcon />
             </span>
             <span> Your Cart </span>
             <span className={classes.badge}>
