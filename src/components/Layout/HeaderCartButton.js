@@ -33,7 +33,7 @@ const btnClasses = `${classes.button} ${ buttonIsHighLighted ? classes.bump : " 
                     clearTimeout(timer);
                  }
 
-         }, [items])
+         }, [items.length])
 
 
 
