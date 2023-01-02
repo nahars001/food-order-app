@@ -6,7 +6,7 @@ import MealItem from './MealItem/MealItem';
     const DUMMY_MEALS = [
         {
             id: 'm1',
-            name: 'Dum Aloo',
+            name: 'Ras Gulle',
             description: 'Finest fish and veggies',
             price: 22.99,
         },
