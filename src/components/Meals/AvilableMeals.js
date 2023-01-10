@@ -9,11 +9,16 @@ import MealItem from './MealItem/MealItem';
 const AvailableMeals = () => {
     const[meals, setMeals ] = useState([]);
     const [isLoading , setISLoading] = useState(true);
+    const[httpError , setHttpError] = useState();
 
 
     useEffect(() =>{
         const fetchMeals = async () => {
         const response = await fetch('https://food-court-nahars001-default-rtdb.asia-southeast1.firebasedatabase.app/meals.json');
+        if(!response.ok){
+            throw new Error ('Something went wrong');
+
+        }
         const responseData = await response.json();
         const loadedMeals = [];
         for(const  key in responseData){
@@ -28,12 +33,27 @@ const AvailableMeals = () => {
         setMeals(loadedMeals);
         setISLoading(false);
         };
-        fetchMeals();
+
+        
+            fetchMeals().catch((error)=> {
+            setISLoading(false);
+            
+            setHttpError(error.message);
+        })
+      
     }, []);
     if(isLoading){
         return(
             <section className={classes.MealsLoading}> 
                 <p> Loading...</p>
+            </section>
+        )
+    }
+
+    if(httpError){
+        return(
+            <section className={classes.MealsError}>
+                <p> {httpError}</p>
             </section>
         )
     }
