@@ -60,7 +60,7 @@ const AvailableMeals = () => {
     const mealsList = meals.map(meal => <MealItem
         key={meal.id}
         name={meal.name}
-        description={meal.name}
+        description={meal.description}
         price={meal.price}
         id={meal.id}
     />);
