@@ -75,7 +75,7 @@ const Cart = props => {
         {!isCheckout && modalActions} </>
     );
 const isSubmittingModalContent = (<> <p> Sending Your Order...</p> </>);
-const didSubmitModalContent =  (<><p> We've received your order. status : </p>
+const didSubmitModalContent =  (<><p> We've received your order. </p>
  <div className={classes.actions}>
                 <button className={classes.button} onClick={props.onClose} > Close </button>
                
